@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Главная страница</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+  </head>
+  <body>
+    <main class="min-h-screen">
+      <div class="flex flex-col justify-center items-center min-h-screen">
+        <section
+          class="flex flex-col gap-6 px-4 py-8 w-[448px] max-md:max-w-md max-md:w-[90%] max-sm:px-2 max-sm:py-4 max-sm:w-full"
+          aria-label="Dashboard Content"
+        >
+          <!-- Header -->
+          <header
+            class="flex justify-between items-center p-4 h-24 rounded-lg bg-gray-900 bg-opacity-60 max-sm:p-3"
+            role="banner"
+          >
+            <h1 class="text-2xl leading-8 text-white">Главная страница</h1>
+            <div
+              class="flex items-center justify-center w-16 h-16 text-3xl leading-9 rounded-full bg-slate-100 text-slate-950"
+              role="img"
+              aria-label="User initials"
+            >
+              ПР
+            </div>
+          </header>
+
+          <!-- Main Content -->
+          <div
+            class="flex flex-col gap-4 p-6 rounded-lg bg-gray-900 bg-opacity-60 max-sm:p-3"
+          >
+            <!-- Group Cards -->
+            <article
+              class="flex justify-between items-center p-4 h-20 bg-gray-900 rounded-lg shadow-sm max-sm:flex-col max-sm:gap-3 max-sm:h-auto"
+            >
+              <h2 class="text-xl font-bold leading-7 text-white">ПР134п</h2>
+              <button
+                class="px-2 py-2 text-sm leading-5 text-center bg-blue-500 rounded-md text-slate-50 w-[139px] max-sm:w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label="Show actions for group ПР134п"
+              >
+                <span>Показать действия</span>
+                <br />
+                <span>над группой</span>
+              </button>
+            </article>
+
+            <article
+              class="flex justify-between items-center p-4 h-20 bg-gray-900 rounded-lg shadow-sm max-sm:flex-col max-sm:gap-3 max-sm:h-auto"
+            >
+              <h2 class="text-xl font-bold leading-7 text-white">ПР223п</h2>
+              <button
+                class="px-2 py-2 text-sm leading-5 text-center bg-blue-500 rounded-md text-slate-50 w-[139px] max-sm:w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label="Show actions for group ПР223п"
+              >
+                <span>Показать действия</span>
+                <br />
+                <span>над группой</span>
+              </button>
+            </article>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col gap-4 mt-4">
+              <button
+                class="p-2 mx-auto my-0 w-64 text-sm leading-5 text-center bg-blue-500 rounded-md text-slate-50 max-sm:w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label="Show group list"
+              >
+                Показать список групп
+              </button>
+              <button
+                class="p-2 mx-auto my-0 w-64 text-sm leading-5 text-center bg-blue-500 rounded-md text-slate-50 max-sm:w-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label="Show personal schedule"
+              >
+                Показать личное расписание
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer -->
+      <footer
+        class="fixed bottom-0 px-0 py-4 w-full text-sm leading-5 text-center text-blue-200 bg-blue-950"
+      >
+        <p>© Омский Авиационный колледж</p>
+      </footer>
+    </main>
+  </body>
+</html>

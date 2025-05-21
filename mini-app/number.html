@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #0d47a1, #0a0a0a);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #1b1b1b;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            color: white;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .date-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .date-selector button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .date-selector button:hover {
+            background-color: #0056b3;
+        }
+
+        .date-display {
+            font-size: 1.1em;
+            color: #aaa;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .icons button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.3em;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .icons button:hover {
+            color: #007bff;
+        }
+
+        .schedule {
+            text-align: left;
+            margin-top: 20px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .lesson {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #444;
+        }
+
+        .subject {
+            font-weight: bold;
+            color: #4fc3f7;
+            margin-bottom: 5px;
+        }
+
+        .homework {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 5px;
+        }
+
+        .time {
+            font-size: 0.85em;
+            color: #aaa;
+        }
+
+        .room {
+            font-size: 0.85em;
+            color: #ff9800;
+        }
+        
+        .lesson-number {
+            font-size: 0.8em;
+            color: #9e9e9e;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="title">Расписание</h2>
+
+    <div class="date-selector">
+        <button id="prev-day">&lt;</button>
+        <span class="date-display" id="current-date"></span>
+        <button id="next-day">&gt;</button>
+    </div>
+
+    <div id="schedule-container" class="schedule">
+    </div>
+
+    <div class="icons">
+        <button id="refresh-btn">Обновить🔄</button>
+        <button id="search-btn">Поиск🔎</button>
+    </div>
+</div>
+
+<script>
+    const dateDisplay = document.getElementById('current-date');
+    const prevDayBtn = document.getElementById('prev-day');
+    const nextDayBtn = document.getElementById('next-day');
+    const scheduleContainer = document.getElementById('schedule-container');
+    
+    let currentDate = new Date(); // Текущая дата
+    const options = { day: 'numeric', month: 'long', weekday: 'long' };
+    
+    const scheduleData = {
+        '21.5': [
+            {
+                subject: 'Химия',
+                homework: 'Понятие о растворах. Повторить тему "Скорость химической реакции. Химическое равновесие". Подготовиться к лабораторной работе №10. Составить конспект по теме "Понятие о растворах"',
+                time: '13:40 - 15:10',
+                room: '205',
+                lessonNumber: '4 занятие'
+            },
+            {
+                subject: 'География',
+                homework: 'Нет домашнего задания',
+                time: '15:20 - 16:50',
+                room: 'отменено',
+                lessonNumber: '5 занятие'
+            },
+            {
+                subject: 'Математика',
+                homework: 'Нет домашнего задания',
+                time: '15:20 - 16:50',
+                room: '',
+                lessonNumber: '5 занятие'
+            },
+            {
+                subject: 'Проект',
+                homework: 'Нет домашнего задания',
+                time: '17:10 - 18:40',
+                room: '123',
+                lessonNumber: '6 занятие'
+            },
+            {
+                subject: 'Физика',
+                homework: 'Нет домашнего задания',
+                time: '17:10 - 18:40',
+                room: '',
+                lessonNumber: '6 занятие'
+            }
+        ],
+        '22.5': [
+            {
+                subject: 'География',
+                homework: 'Нет домашнего задания',
+                time: '9:40 - 11:10',
+                room: '335',
+                lessonNumber: '2 занятие'
+            },
+            {
+                subject: 'Математика',
+                homework: 'Нет домашнего задания',
+                time: '11:30 - 13:00',
+                room: 'отменено',
+                lessonNumber: '3 занятие'
+            },
+            {
+                subject: 'Биология',
+                homework: 'Нет домашнего задания',
+                time: '11:30 - 13:00',
+                room: '332',
+                lessonNumber: '3 занятие'
+            },
+            {
+                subject: 'Русский язык',
+                homework: 'Подготовить сочинение на тему "Лето"',
+                time: '13:40 - 15:10',
+                room: '210',
+                lessonNumber: '4 занятие'
+            }
+        ],
+        '23.5': [
+            {
+                subject: 'Физкультура',
+                homework: 'Нет домашнего задания',
+                time: '8:00 - 9:30',
+                room: '401',
+                lessonNumber: '1 занятие'
+            },
+            {
+                subject: 'Математика',
+                homework: 'Нет домашнего задания',
+                time: '9:40 - 11:10',
+                room: '335',
+                lessonNumber: '2 занятие'
+            },
+            {
+                subject: 'Химия',
+                homework: 'Составить конспект по теме "Понятие о растворах"',
+                time: '11:30 - 13:00',
+                room: '325',
+                lessonNumber: '3 занятие'
+            }
+        ],
+        '24.5': [
+            {
+                subject: 'Информатика',
+                homework: 'Нет домашнего задания',
+                time: '8:00 - 9:30',
+                room: '220',
+                lessonNumber: '1 занятие'
+            },
+            {
+                subject: 'Математика',
+                homework: 'Нет домашнего задания',
+                time: '9:40 - 11:10',
+                room: '335',
+                lessonNumber: '2 занятие'
+            },
+            {
+                subject: 'Физика',
+                homework: 'Нет домашнего задания',
+                time: '11:30 - 13:00',
+                room: '123',
+                lessonNumber: '3 занятие'
+            }
+        ],
+        'default': [
+            {
+                subject: 'Расписание отсутствует',
+                homework: 'Проверьте другую дату',
+                time: '',
+                room: '',
+                lessonNumber: ''
+            }
+        ]
+    };
+
+    function updateDateDisplay() {
+        dateDisplay.textContent = currentDate.toLocaleDateString('ru-RU', options);
+        displaySchedule();
+    }
+
+    function displaySchedule() {
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1; // Месяцы начинаются с 0
+        const dateKey = `${day}.${month}`;
+        
+        const schedule = scheduleData[dateKey] || scheduleData['default'];
+        
+        let html = '';
+        schedule.forEach(lesson => {
+            html += `
+                <div class="lesson">
+                    <div class="lesson-number">${lesson.lessonNumber}</div>
+                    <div class="subject">${lesson.subject}</div>
+                    <div class="homework">${lesson.homework}</div>
+                    <div class="time">${lesson.time} <span class="room">${lesson.room ? `, ${lesson.room}` : ''}</span></div>
+                </div>
+            `;
+        });
+        
+        scheduleContainer.innerHTML = html;
+    }
+
+    prevDayBtn.addEventListener('click', function() {
+        currentDate.setDate(currentDate.getDate() - 1);
+        updateDateDisplay();
+    });
+
+    nextDayBtn.addEventListener('click', function() {
+        currentDate.setDate(currentDate.getDate() + 1);
+        updateDateDisplay();
+    });
+
+    document.getElementById('refresh-btn').addEventListener('click', function() {
+        location.reload();
+    });
+
+    document.getElementById('search-btn').addEventListener('click', function() {
+        const searchTerm = prompt('Введите дату в формате дд.мм (например, 23.05):');
+        if (searchTerm) {
+            const [day, month] = searchTerm.split('.');
+            if (day && month) {
+                currentDate = new Date(currentDate.getFullYear(), parseInt(month)-1, parseInt(day));
+                updateDateDisplay();
+            } else {
+                alert('Пожалуйста, введите дату в правильном формате (дд.мм)');
+            }
+        }
+    });
+
+    updateDateDisplay();
+</script>
+
+</body>
+</html>

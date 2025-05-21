@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #0d47a1, #0a0a0a);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #1b1b1b;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            color: white;
+            height: 500px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 50px;
+        }
+
+        .user-avatar img {
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .date-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .date-selector button {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .date-selector button:hover {
+            background-color: #0056b3;
+        }
+
+        .date-display {
+            font-size: 1.1em;
+            color: #aaa;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .icons button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 1.3em;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .icons button:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+    </div>
+
+    <h2 class="title">Расписание</h2>
+
+    <div class="date-selector">
+        <button id="prev-day">&lt;</button>
+        <span class="date-display" id="current-date">14 октября (ПН)</span>
+        <button id="next-day">&gt;</button>
+    </div>
+</div>
+
+<script>
+    const dateDisplay = document.getElementById('current-date');
+    const prevDayBtn = document.getElementById('prev-day');
+    const nextDayBtn = document.getElementById('next-day');
+    
+    let currentDate = new Date(2024, 9, 14); // 14 октября 2024 года
+
+    const options = { day: 'numeric', month: 'long', weekday: 'short' };
+    
+    function updateDateDisplay() {
+        dateDisplay.textContent = currentDate.toLocaleDateString('ru-RU', options);
+    }
+
+    prevDayBtn.addEventListener('click', function() {
+        currentDate.setDate(currentDate.getDate() - 1);
+        updateDateDisplay();
+    });
+
+    nextDayBtn.addEventListener('click', function() {
+        currentDate.setDate(currentDate.getDate() + 1);
+        updateDateDisplay();
+    });
+
+    // Обновить расписание
+    document.getElementById('refresh-btn').addEventListener('click', function() {
+        alert('Расписание обновлено!');
+    });
+
+    // Поиск расписания
+    document.getElementById('search-btn').addEventListener('click', function() {
+        alert('Функция поиска пока не реализована.');
+    });
+
+    updateDateDisplay(); // Инициализация даты
+</script>
+
+</body>
+</html>

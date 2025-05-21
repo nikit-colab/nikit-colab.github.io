@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #0d47a1, #0a0a0a);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #1b1b1b;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+            color: white;
+        }
+
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            color: white;
+        }
+
+        th, td {
+            border: 1px solid #aaa;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="title">Расписание на сегодня</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Предмет</th>
+                <th>Время</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if ($scheduleData): ?>
+                <?php foreach ($scheduleData as $row): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['subject']); ?></td>
+                        <td><?php echo htmlspecialchars($row['time']); ?></td>
+                        <td><?php echo htmlspecialchars($row['date']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="3">Нет данных</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

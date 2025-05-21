@@ -1,0 +1,146 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(45deg, #0D469F, #0B2957, #0B0D12);
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    background-color: white;
+    padding: 30px; /* Увеличил отступы для лучшего вида */
+    border-radius: 12px; /* Сделал скругление чуть больше */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Улучшил тень */
+    text-align: center;
+    width: 350px; /* Слегка увеличил ширину */
+    z-index: 1;
+}
+
+.auth-title {
+    color: #333; /* Сделал заголовок более читаемым */
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 120px; /* Слегка увеличил размер логотипа */
+    margin-bottom: 30px;
+    border-radius: 50%; /* Добавил скругление для логотипа (если нужно) */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Добавил небольшую тень логотипу */
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%; /* Занимает всю ширину контейнера */
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    text-align: left;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+.input-field {
+    width: calc(100% - 24px); /* Учел внутренние отступы */
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #ddd; /* Сделал рамку светлее */
+    border-radius: 6px; /* Сделал скругление чуть больше */
+    transition: border-color 0.3s ease-in-out; /* Добавил easing */
+    box-sizing: border-box; /* Важно для правильного расчета ширины */
+    font-size: 1rem; /* Улучшил читаемость текста */
+}
+
+.input-field:focus {
+    border-color: #261C67;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Добавил небольшую тень при фокусе */
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: #261C67;
+    color: white;
+    border: none;
+    border-radius: 6px; /* Сделал скругление чуть больше */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Добавил easing и transform */
+    font-size: 1.1rem; /* Увеличил размер шрифта кнопки */
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Небольшой эффект подъема при наведении */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Усилил тень при наведении */
+}
+
+.button:active {
+    transform: translateY(0); /* Возвращаем кнопку в исходное положение при клике */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Уменьшаем тень при клике */
+}
+
+.forgot-password {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    color: #261C67;
+    transition: color 0.3s ease-in-out;
+}
+
+.forgot-password a:hover {
+    color: #0056b3;
+    text-decoration: underline; /* Добавил подчеркивание при наведении на ссылку */
+}
+
+.error-message {
+    color: #dc3545; /* Красный цвет для ошибок */
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.success-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 123, 255, 0.8); /* Более приятный цвет для оверлея */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 3; /* Убедимся, что он выше контейнера */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.success-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}

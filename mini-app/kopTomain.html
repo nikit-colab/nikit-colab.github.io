@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Главная страница</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+    
+    body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(45deg, #0D469F, #0B2957, #0B0D12);
+            overflow: hidden;
+            position: relative;
+        }
+    
+    .dashboard-container {
+      padding-top: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .dashboard-header {
+      padding: 15px 32px 15px 32px;
+      border-radius: 15px;
+      background-color: rgba(24, 24, 27, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      height: 10%;
+      border-width: medium;
+      
+    }
+    
+    .dashboard-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      
+    }
+    
+    .divider {
+      margin: 20px 0;
+      height: 1px;
+      background-color: #18181b;
+      border: none;
+    }
+    
+    .content-container {
+      padding: 32px;
+      border-radius: 15px;
+      background-color: rgba(24, 24, 27, 0.5);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .group-item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #d6d3d1;
+      background-color: rgba(23, 23, 23, 0.6);
+    }
+    
+    .group-item-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .group-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+    }
+    
+    .action-button {
+      padding: 6px 8px;
+      font-size: 12px;
+      color: white;
+      background-color: #2563eb;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      max-width: 150px; /* Максимальная ширина кнопки */
+      width: 100%; /* Чтобы кнопка занимала всю доступную ширину до max-width */
+    }
+
+    .action-button_bottom {
+      padding: 6px 8px;
+      font-size: 12px;
+      color: white;
+      background-color: #2563eb;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      width: 100%; /* Чтобы кнопка занимала всю доступную ширину до max-width */
+    }
+    
+    .action-buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .toggle-button{
+            background-color: transparent;
+            border: none;
+            
+            
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .dashboard-card {
+        max-width: 400px;
+        width: 90%;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .dashboard-card {
+        padding: 20px;
+        width: 95%;
+      }
+    
+      .dashboard-header {
+        flex-direction: column;
+        gap: 16px;
+      }
+    
+      .group-item-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    
+      .group-action-button,
+      .action-button {
+        width: 100%;
+      }
+    }
+    </style>
+
+  </head>
+  <body>
+    <main class="dashboard-container">
+      <section class="dashboard-card">
+        <header class="dashboard-header">
+          <h1 class="dashboard-title">Главная страница</h1>
+          <div class="avatar-container">
+            <button class="toggle-button" onclick="location.href='AccoundLez.html'">
+                <svg
+                width="76"
+                height="76"
+                viewBox="0 0 76 76"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="avatar-icon"
+                style="width: 75px; height: 75px"
+                    >
+                <rect
+                  x="0.540527"
+                  y="0.245728"
+                  width="75"
+                  height="75"
+                  rx="37.5"
+                  fill="#FDA6B3"
+                      ></rect>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M49.291 30.2457C49.291 36.4589 44.2542 41.4957 38.041 41.4957C31.8278 41.4957 26.791 36.4589 26.791 30.2457C26.791 24.0325 31.8278 18.9957 38.041 18.9957C44.2542 18.9957 49.291 24.0325 49.291 30.2457ZM45.541 30.2457C45.541 34.3879 42.1831 37.7457 38.041 37.7457C33.8988 37.7457 30.541 34.3879 30.541 30.2457C30.541 26.1036 33.8988 22.7457 38.041 22.7457C42.1831 22.7457 45.541 26.1036 45.541 30.2457Z"
+                  fill="#72323F"
+                    ></path>
+                <path
+                  d="M38.041 47.1207C25.9015 47.1207 15.5584 54.299 11.6184 64.3558C12.5782 65.3089 13.5893 66.2104 14.6471 67.0558C17.581 57.8227 26.7848 50.8707 38.041 50.8707C49.2972 50.8707 58.501 57.8227 61.4348 67.0559C62.4927 66.2104 63.5038 65.3089 64.4636 64.3558C60.5236 54.299 50.1805 47.1207 38.041 47.1207Z"
+                  fill="#72323F"
+                    ></path>
+                </svg>
+              </button>
+          </div>
+        </header>
+  
+        <hr hidden class="divider" />
+
+        <div class="content-container">
+          <article class="group-item">
+            <div class="group-item-content">
+              <h2 class="group-name">ПР134п</h2>
+              <button class="action-button group-action-button" onclick="location.href='strGroup.html'">
+                Показать действия над группой
+              </button>
+            </div>
+          </article>
+
+          <article class="group-item">
+            <div class="group-item-content">
+              <h2 class="group-name">ПР223п</h2>
+              <button class="action-button group-action-button" onclick="location.href='strGroup2.html'">
+                Показать действия над группой
+              </button>
+            </div>
+          </article>
+
+          <div class="action-buttons-container">
+            <button class="action-button_bottom">Показать личное расписание</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
